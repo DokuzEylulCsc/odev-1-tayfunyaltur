@@ -44,7 +44,7 @@
     <Compile Include="Asker.cs" />
     <Compile Include="Bolge.cs" />
     <Compile Include="Er.cs" />
-    <Compile Include="Ermeydani.cs" />
+    <Compile Include="Meydan.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Takim.cs" />
