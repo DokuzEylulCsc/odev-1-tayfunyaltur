@@ -11,12 +11,12 @@ namespace Odev_1
         
         static void Main(string[] args)
         {
-            string filePath = @"..\logs.txt";
-            FileStream fs = new FileStream(filePath, FileMode.OpenOrCreate, FileAccess.Write);
-            StreamWriter sw = new StreamWriter(fs);
-            sw.WriteLine("Savas Loglari");
-            Meydan arena = new Meydan();
-            Takim team1 = new Takim(1, arena,sw);
+            string filePath = @"..\logs.txt";//loglarin tutulacagi dosyanin konumu belirler ( suan bin dosyasinin icerisinde tutulacak)
+            FileStream fs = new FileStream(filePath, FileMode.OpenOrCreate, FileAccess.Write);//eger logs.txt varsa acar yoksa yaratir ve yazma modunda acar dosyayi
+            StreamWriter sw = new StreamWriter(fs);//file stream ile actigimiz dosyayi streamWriter a parametre verip sw nesnesi olusturuyoruz
+            sw.WriteLine("Savas Loglari");//ve dosyanin icerisine yazmaya basliyoruz ( bu adim buffera yazar)
+            Meydan arena = new Meydan();//meydan nesnesi olusturuyoruz
+            Takim team1 = new Takim(1, arena,sw);//takim 
             Takim team2 = new Takim(2, arena,sw);
             arena.Sw = sw;
             arena.Team1 = team1;

@@ -8,11 +8,12 @@ namespace Odev_1
     class Er : Asker 
     {
         
-        public Er(int takim,Bolge bolge):base(1,takim)   // constructor method 
+        public Er(int takim,Bolge bolge):base(1,takim)   // constructor method base constructor methoddaki power butun erler icin 1 olucaktir
         {
             this.Health = 100;
             this.IsAlive = true;
             this.Coor = bolge;
+            
            
         }
         public override void HareketEt()// Er in hareketlerini rastgelelestiricek ve hareket etmesini saglicak olan metod 
@@ -21,12 +22,12 @@ namespace Odev_1
             int rand = r.Next(1, 4); // 1 ile 3 arasinda rastgele sayi ureteci 
             switch (rand)
             {
-                case 1:
+                case 1://1 gelirse asagi yuruyecek
                     if (Area.isValidPosForDown(this))
                     {
                         if(Area.isFreePos(Area.Point[this.Coor.X, this.Coor.Y + 1]))
                         {
-                            this.Coor = Area.Point[this.Coor.X, this.Coor.Y + 1];// yukarisi bos ise yukari gider
+                            this.Coor = Area.Point[this.Coor.X, this.Coor.Y + 1];// asagisi bos ise asagisi gider
                             Sw.WriteLine("-----------------------------");
                             Sw.WriteLine(Team+ ". Takimin (" + Coor.X+","+Coor.Y+ ") Konumundaki ER'i :");
                             Sw.WriteLine("("+Coor.X+","+(Coor.Y+1)+") Karesine gitti .");
@@ -35,19 +36,19 @@ namespace Odev_1
                     }
                     else if (Area.isValidPosForRight(this))
                     {
-                        this.Coor = Area.Point[this.Coor.X + 1, this.Coor.Y]; // yukarisi dolu ise saga gider
+                        this.Coor = Area.Point[this.Coor.X + 1, this.Coor.Y]; // asagisi dolu ise saga gider
                         Sw.WriteLine("-----------------------------");
                         Sw.WriteLine(Team + ". Takimin (" + Coor.X + "," + Coor.Y + ") Konumundaki ER'i :");
                         Sw.WriteLine("(" + (Coor.X+1) + "," + (Coor.Y) + ") Karesine gitti .");
                         Sw.Flush();
                     }
                     break;
-                case 2:
+                case 2://2 gelirse yukari yuruyecektir
                     if (Area.isValidPosForUp(this))
                     {
                         if (Area.isFreePos(Area.Point[this.Coor.X, this.Coor.Y - 1]))
                         {
-                            this.Coor = Area.Point[this.Coor.X, this.Coor.Y - 1];// asagisi bos ise asagi gider
+                            this.Coor = Area.Point[this.Coor.X, this.Coor.Y - 1];// yukarisi bos ise yukari gider
                             Sw.WriteLine("-----------------------------");
                             Sw.WriteLine(Team + ". Takimin (" + Coor.X + "," + Coor.Y + ") Konumundaki ER'i :");
                             Sw.WriteLine("(" + (Coor.X) + "," + (Coor.Y-1) + ") Karesine gitti .");
@@ -56,14 +57,14 @@ namespace Odev_1
                     }
                     else if (Area.isValidPosForLeft(this))
                     {
-                        this.Coor = Area.Point[this.Coor.X - 1, this.Coor.Y];//asagisi dolu ise sola gider
+                        this.Coor = Area.Point[this.Coor.X - 1, this.Coor.Y];//yukarisi dolu ise sola gider
                         Sw.WriteLine("-----------------------------");
                         Sw.WriteLine(Team + ". Takimin (" + Coor.X + "," + Coor.Y + ") Konumundaki ER'i :");
                         Sw.WriteLine("(" + (Coor.X - 1) + "," + (Coor.Y) + ") Karesine gitti .");
                         Sw.Flush();
                     }
                     break;
-                case 3:
+                case 3: // 3 gelirse bekleyecektir
                     Sw.WriteLine("-----------------------------");
                     Sw.WriteLine(Team + ". Takimin (" + Coor.X + "," + Coor.Y + ") Konumundaki ER'i :");
                     Sw.WriteLine("BEKLEDI");

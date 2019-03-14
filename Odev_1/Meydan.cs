@@ -11,11 +11,11 @@ namespace Odev_1
         private Bolge[,] bolge = new Bolge[16, 16];
         private Takim t1, t2;
         private StreamWriter sw;
-        public StreamWriter Sw
+        public StreamWriter Sw // vurulma islemlerinin dosyaya yazilabilmesi icin streamWriter tanimlandi daha sonra Main methoddan atanicak
         {
             get
             {
-                return sw;
+                return sw;//get ve set edilebilicek 
             }
             set
             {
@@ -39,7 +39,7 @@ namespace Odev_1
             {
                 t1 = value;
             }
-        }
+        } // get set
         public Takim Team2
         {
             get
@@ -50,9 +50,12 @@ namespace Odev_1
             {
                 t2 = value;
             }
-        }
+        } // get  set
+        /*takim 1 ve takim 2 meydan icerisine de aktarildi ki daha sonra butun ates etme hareket etme kontrolleri
+         * meydan objesi ile kontrol edilicek
+         */
         public Meydan()
-        {
+        {       //bolge isimli Bolge matrisinin [i,j] elemani icin x=i , y=j olucak sekilde ayarlanmistir
             for (int i = 0; i < 16; i++)
             {
                 for (int j = 0; j < 16; j++)
@@ -64,7 +67,11 @@ namespace Odev_1
 
         public bool isFreePos(Bolge bolge)
         {
-            foreach(Asker a in Team1.Boluk)
+            /*askerin gidecegi hedef bolgeyi parametre olarak alip o bolgede baska asker
+             * olup olmadigina bakilacak olan fonksiyon , bool bir deger dondurup Askerin
+             * haraket et methodunun icerisinde dogrudan if in conditioni olarak kullanilacak
+             */
+            foreach (Asker a in Team1.Boluk)
             {
                 if(a.Coor==bolge && a.IsAlive)
                 {
@@ -86,7 +93,10 @@ namespace Odev_1
         }
         public bool isValidPosForUp(Asker a)
         {
-            if(a.Coor.Y <= 0)
+            /*haraket edicek olan askeri parametre olarak alir ve askerin yukari
+         * kose sinirlarda olup olmadigina bakar 
+         */
+            if (a.Coor.Y <= 0)
             {
                 return false;
             }
@@ -97,6 +107,9 @@ namespace Odev_1
         }
         public bool isValidPosForDown(Asker a)
         {
+            /*haraket edicek olan askeri parametre olarak alir ve askerin asagi
+            * kose sinirlarda olup olmadigina bakar 
+            */
             if (a.Coor.Y >= 15)
             {
                 return false;
@@ -108,6 +121,9 @@ namespace Odev_1
         }
         public bool isValidPosForLeft(Asker a)
         {
+            /*haraket edicek olan askeri parametre olarak alir ve askerin sol
+            * kose sinirlarda olup olmadigina bakar 
+            */
             if (a.Coor.X <= 0) return false;
             /*askerin konumuna bakar eger:
              * tahtanin sol ucunda ise false dondurur
@@ -116,6 +132,9 @@ namespace Odev_1
         }
         public bool isValidPosForRight(Asker a)
         {
+            /*haraket edicek olan askeri parametre olarak alir ve askerin sag
+            * kose sinirlarda olup olmadigina bakar 
+            */
             if (a.Coor.X >= 15) return false;
             /*askerin konumuna bakar eger:
              * tahtanin sag ucunda ise false dondurur
@@ -124,6 +143,11 @@ namespace Odev_1
         }
         public void isShot(Asker a,int Hit)
         {
+            /*askeri ve verdigi hasar puanini parametre olarak alir ve o askerin konumuna belirli mesafede
+             * olan diger rakip askerlerin canlarini o askerin vericegi hitpoint oraninda azaltir
+             * ayni zamanda cani 0in altina veya 0 a dusen asker olursa canini 0a esitler ve 
+             * isAlive boolunu flase yapar
+             */
             switch (a.Team)
             {
                 case 1:
@@ -167,16 +191,20 @@ namespace Odev_1
                                 e.Health = 0;
                                 Console.WriteLine(e.Team + ". Takimdaki (" + e.Coor.X + "," + e.Coor.Y + ") Bolgesindeki Asker "
                                 + Hit + "Hasar Aldi ve Cani Kalmadi ,Sizlere Omur");
+                                sw.WriteLine(e.Team + "-------************************************-----");
                                 sw.WriteLine(e.Team + ". Takimdaki (" + e.Coor.X + "," + e.Coor.Y + ") Bolgesindeki Asker "
                                 + Hit + "Hasar Aldi ve Cani Kalmadi ,Sizlere Omur");
+                                sw.WriteLine(e.Team + "-------************************************-----");
                                 sw.Flush();
                             }
                             else
                             {
                                 Console.WriteLine(e.Team + ". Takimdaki (" + e.Coor.X + "," + e.Coor.Y + ") Bolgesindeki Asker "
                                 + Hit + "Hasar Aldi ve Cani " + e.Health + " KALDI");
+                                sw.WriteLine(e.Team + "-------************************************-----");
                                 sw.WriteLine(e.Team + ". Takimdaki (" + e.Coor.X + "," + e.Coor.Y + ") Bolgesindeki Asker "
                                 + Hit + "Hasar Aldi ve Cani " + e.Health + " KALDI");
+                                sw.WriteLine(e.Team + "-------************************************-----");
                                 sw.Flush();
                             }
                         }
@@ -187,30 +215,34 @@ namespace Odev_1
         }
         public bool Continue()
         {
+            /*savasin devam edip etmedigini kontrol edicek olan method dogrudan bool donduru ve 
+             * main methodunun icerisindeki while in conditioni olarak atanicak 
+             * eger herhangi bir takimin butun askerlerinin canlari toplami 
+             * 0 a esit olursa false dondurucek ve kaybeden tarafi ilan edicektir
+             */
             int teamHealt = 0;
             foreach(Asker a in t1.Boluk)
             {
-                teamHealt += a.Health;
-                if (teamHealt == 0)
-                {
-                    Console.WriteLine("Team 1 KAYBETTI");
-                    sw.WriteLine("Team 1 KAYBETTI");
-                    sw.Flush();
-                    return false;
-                    
-                }
+                teamHealt += a.Health;                
+            }
+            if (teamHealt == 0)
+            {
+                Console.WriteLine("Team 1 KAYBETTI");
+                sw.WriteLine("Team 1 KAYBETTI");
+                sw.Flush();
+                return false;
             }
             teamHealt = 0;
             foreach (Asker a in t2.Boluk)
             {
-                teamHealt += a.Health;
-                if (teamHealt == 0)
-                {
-                    Console.WriteLine("Team 2 KAYBETTI");
-                    sw.WriteLine("Team 2 KAYBETTI");
-                    sw.Flush();
-                    return false;
-                }
+                teamHealt += a.Health;              
+            }
+            if (teamHealt == 0)
+            {
+                Console.WriteLine("Team 2 KAYBETTI");
+                sw.WriteLine("Team 2 KAYBETTI");
+                sw.Flush();
+                return false;
             }
             teamHealt = 0;
             return true;

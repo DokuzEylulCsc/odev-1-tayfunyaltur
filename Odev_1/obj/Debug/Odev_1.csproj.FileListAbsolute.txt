@@ -4,3 +4,9 @@ C:\Users\Tayfun YALTUR\Desktop\Odev1\Odev_1\obj\Debug\Odev_1.csprojAssemblyRefer
 C:\Users\Tayfun YALTUR\Desktop\Odev1\Odev_1\obj\Debug\Odev_1.csproj.CoreCompileInputs.cache
 C:\Users\Tayfun YALTUR\Desktop\Odev1\Odev_1\obj\Debug\Odev_1.exe
 C:\Users\Tayfun YALTUR\Desktop\Odev1\Odev_1\obj\Debug\Odev_1.pdb
+C:\Users\Tayfun YALTUR\Desktop\odev-1-tayfunyaltur\Odev_1\bin\Debug\Odev_1.exe
+C:\Users\Tayfun YALTUR\Desktop\odev-1-tayfunyaltur\Odev_1\bin\Debug\Odev_1.pdb
+C:\Users\Tayfun YALTUR\Desktop\odev-1-tayfunyaltur\Odev_1\obj\Debug\Odev_1.csprojAssemblyReference.cache
+C:\Users\Tayfun YALTUR\Desktop\odev-1-tayfunyaltur\Odev_1\obj\Debug\Odev_1.csproj.CoreCompileInputs.cache
+C:\Users\Tayfun YALTUR\Desktop\odev-1-tayfunyaltur\Odev_1\obj\Debug\Odev_1.exe
+C:\Users\Tayfun YALTUR\Desktop\odev-1-tayfunyaltur\Odev_1\obj\Debug\Odev_1.pdb

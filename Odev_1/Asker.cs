@@ -11,7 +11,7 @@ namespace Odev_1
     {
         private bool isAlive; // canli olup olmadiklarini tutacak olan degisken  
         private int hp; // canlarini tutucak olan degisken
-        private int guc; // guclerini tutucak olan degisken er = 1 tegmen = 2 yuzbasi = 3
+        private int guc; // guclerini tutucak olan degisken er = 1 tegmen = 2 yuzbasi = 3 ates edebilicekleri menzil 
         private int takim; // hangi takimda olduklarini tutucak olan degisken 1 ya da 2 
         private StreamWriter sw;
         private Bolge bolge;
